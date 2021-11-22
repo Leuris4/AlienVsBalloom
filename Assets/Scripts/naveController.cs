@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class naveController : MonoBehaviour
 {
@@ -23,11 +24,17 @@ public class naveController : MonoBehaviour
         {
             gameObject.transform.Translate(0, 50f * Time.deltaTime, 0);
         }
-        if(Input.GetKey(KeyCode.Space) && Time.time > LastShoot + 0.25f)
+        if(Input.GetKey(KeyCode.Space) && Time.time > LastShoot + 0.85f)
         {
             shoot();
             LastShoot = Time.time;
         }
+
+        if(gameObject.transform.position.y < -26)
+            SceneManager.LoadScene("GameOver");
+
+        if (gameObject.transform.position.y > 26)
+            SceneManager.LoadScene("GameOver");
     }
 
     private void shoot()

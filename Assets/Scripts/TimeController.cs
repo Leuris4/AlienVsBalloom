@@ -15,13 +15,13 @@ public class TimeController : MonoBehaviour
     void Update()
     {
 
-        ScoreManager.scoreManager.RaiseTime(Time.time);
+        ScoreManager.scoreManager.RaiseTime(Time.timeSinceLevelLoad);
         if (Convert.ToInt32(Time.time) % 10 == 0 && Time.time > 1)
         {
-            if(verifier != Convert.ToInt32(Time.time))
+            if(verifier != Convert.ToInt32(Time.timeSinceLevelLoad))
             {
                 ScoreManager.scoreManager.RaiseScore(-5);
-                verifier = Convert.ToInt32(Time.time);
+                verifier = Convert.ToInt32(Time.timeSinceLevelLoad);
             }
         }
     }
